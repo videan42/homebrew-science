@@ -9,8 +9,6 @@ class Pspp < Formula
   option 'without-check', 'Skip running the PSPP test suite'
   option 'without-gui', 'Build without gui support'
 
-  option 'with-postgresql', 'Build with postgres support'
-
   depends_on 'pkg-config' => :build
 
   depends_on :x11
@@ -22,15 +20,13 @@ class Pspp < Formula
   depends_on 'cairo'
   depends_on 'pango'
 
+  depends_on 'postgresql' => :optional
+
   if build.with? 'gui'
     depends_on 'gtk+'
     depends_on 'gtksourceview'
     depends_on 'freetype'
     depends_on 'fontconfig'
-  end
-
-  if build.with? 'postgresql'
-    depends_on 'postgresql'
   end
 
   patch :DATA
